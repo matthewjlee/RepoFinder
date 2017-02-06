@@ -23,6 +23,9 @@ class RepoResultsViewController: UIViewController, UITableViewDataSource, UITabl
         
         tableView.dataSource = self
         tableView.delegate = self
+        
+        //tableView.rowHeight = UITableViewAutomaticDimension
+        //tableView.estimatedRowHeight = 120
 
         // Initialize the UISearchBar
         searchBar = UISearchBar()
@@ -38,6 +41,7 @@ class RepoResultsViewController: UIViewController, UITableViewDataSource, UITabl
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RepoTableViewCell", for: indexPath) as! RepoTableViewCell
+        cell.repo = repos[indexPath.row]
         return cell
     }
     
@@ -61,7 +65,9 @@ class RepoResultsViewController: UIViewController, UITableViewDataSource, UITabl
             for repo in newRepos {
                 print(repo)
                 self.repos = newRepos
-            }   
+            }
+            
+            self.tableView.reloadData()
 
             MBProgressHUD.hide(for: self.view, animated: true)
             }, error: { (error) -> Void in
