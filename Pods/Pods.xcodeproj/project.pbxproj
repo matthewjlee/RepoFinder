@@ -255,6 +255,7 @@
 		20B56609144CE204DFA8221F742B2D76 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				277899021E7D807B0B1C4C799E643C4C /* Products */,
 				3193CAF693F496CF6BBAA7E0BCD76004 /* iOS */,
 			);
 			name = Frameworks;
@@ -346,7 +347,6 @@
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				20B56609144CE204DFA8221F742B2D76 /* Frameworks */,
 				C3E68059DFDE3B48D622607C98728B3F /* Pods */,
-				277899021E7D807B0B1C4C799E643C4C /* Products */,
 				A1D95255B58DC33682E8AD9F0741A397 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";

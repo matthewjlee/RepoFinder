@@ -22,7 +22,7 @@ class RepoTableViewCell: UITableViewCell {
             name.text = repo.name
             owner.text = repo.ownerHandle
             photoImageView.setImageWith(URL(string: repo.ownerAvatarURL!)!)
-            descriptionLabel.text = repo.description
+            descriptionLabel.text = repo.repoDescription
             stars.text = "\(repo.stars!)"
             forks.text = "\(repo.forks!)"
         }
@@ -32,6 +32,16 @@ class RepoTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        //manually setting the max layout width
+        name.preferredMaxLayoutWidth = name.frame.size.width
+    }
+    
+    //for rotation
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        name.preferredMaxLayoutWidth = name.frame.size.width
+
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
