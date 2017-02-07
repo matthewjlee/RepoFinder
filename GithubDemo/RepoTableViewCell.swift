@@ -34,13 +34,13 @@ class RepoTableViewCell: UITableViewCell {
         // Initialization code
         
         //manually setting the max layout width
-        name.preferredMaxLayoutWidth = name.frame.size.width
+        //name.preferredMaxLayoutWidth = name.frame.size.width
     }
     
     //for rotation
     override func layoutSubviews() {
         super.layoutSubviews()
-        name.preferredMaxLayoutWidth = name.frame.size.width
+        //name.preferredMaxLayoutWidth = name.frame.size.width
 
     }
 
