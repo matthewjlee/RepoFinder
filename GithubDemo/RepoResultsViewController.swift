@@ -10,7 +10,7 @@ import UIKit
 import MBProgressHUD
 
 // Main ViewController
-class RepoResultsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class RepoResultsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SettingsPresentingViewControllerDelegate {
     @IBOutlet weak var tableView: UITableView!
 
     var searchBar: UISearchBar!
@@ -64,8 +64,10 @@ class RepoResultsViewController: UIViewController, UITableViewDataSource, UITabl
             // Print the returned repositories to the output window
             for repo in newRepos {
                 print(repo)
-                self.repos = newRepos
+                //self.repos = newRepos
             }
+            
+            self.repos = newRepos
             
             self.tableView.reloadData()
 
@@ -74,6 +76,24 @@ class RepoResultsViewController: UIViewController, UITableViewDataSource, UITabl
                 print(error)
         })
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let navController = segue.destination as! UINavigationController
+        let vc = navController.topViewController as! SearchSettingsViewController
+        vc.settings = self.searchSettings
+        vc.delegate = self
+    }
+    
+    func didSaveSettings(settings: GithubRepoSearchSettings) {
+        print("minstars: \(settings.minStars)")
+        self.searchSettings = settings
+        doSearch()
+    }
+    
+    func didCancelSettings() {
+        //do nothing here
+    }
+
 }
 
 // SearchBar methods
